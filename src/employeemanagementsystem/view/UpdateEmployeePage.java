@@ -5,17 +5,39 @@
  */
 package employeemanagementsystem.view;
 
+import employeemanagementsystem.config.Config;
+import employeemanagementsystem.model.Employee;
+import employeemanagementsystem.service.EmployeeService;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author GAUTAMI
  */
 public class UpdateEmployeePage extends javax.swing.JFrame {
+    Employee e = null;
+    int id;
 
     /**
      * Creates new form UpdateEmployeePage
      */
     public UpdateEmployeePage() {
         initComponents();
+    }
+    public UpdateEmployeePage(Employee emp) {
+        initComponents();
+        e= emp;
+        System.out.println("In Update Employee =>"+e);
+        id= e.getId();
+        nameTextField.setText(e.getName());
+        phoneTextField.setText(e.getPhone());
+        addressTextArea.setText(e.getAddress());
+        cityTextField.setText(e.getCity());
+        stateTextField.setText(e.getState());
+        departmnetTextField.setText(e.getDepartment());
+        
+        
+        
     }
 
     /**
@@ -32,20 +54,20 @@ public class UpdateEmployeePage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        phoneTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        nameTextField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        addressTextArea = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        departmnetTextField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        cityTextField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        stateTextField = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        UpdateButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -72,9 +94,9 @@ public class UpdateEmployeePage extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI Symbol", 1, 18)); // NOI18N
         jLabel2.setText("Name:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        phoneTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                phoneTextFieldActionPerformed(evt);
             }
         });
 
@@ -84,9 +106,9 @@ public class UpdateEmployeePage extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI Symbol", 1, 18)); // NOI18N
         jLabel4.setText("Address:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        addressTextArea.setColumns(20);
+        addressTextArea.setRows(5);
+        jScrollPane1.setViewportView(addressTextArea);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Symbol", 1, 18)); // NOI18N
         jLabel5.setText("Department:");
@@ -107,22 +129,22 @@ public class UpdateEmployeePage extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(23, 23, 23)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(31, 31, 31)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
+                            .addComponent(phoneTextField)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE))))
                 .addGap(106, 106, 106)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(departmnetTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
@@ -143,24 +165,24 @@ public class UpdateEmployeePage extends javax.swing.JFrame {
                         .addGap(57, 57, 57)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(59, 59, 59))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(phoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(56, 56, 56)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(132, Short.MAX_VALUE))
+                        .addComponent(departmnetTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(83, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(68, 68, 68)
@@ -175,14 +197,14 @@ public class UpdateEmployeePage extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(75, 53, 35));
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Update Button");
-        jButton1.setActionCommand("");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        UpdateButton.setBackground(new java.awt.Color(0, 0, 0));
+        UpdateButton.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        UpdateButton.setForeground(new java.awt.Color(255, 255, 255));
+        UpdateButton.setText("Update Button");
+        UpdateButton.setActionCommand("");
+        UpdateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                UpdateButtonActionPerformed(evt);
             }
         });
 
@@ -192,14 +214,14 @@ public class UpdateEmployeePage extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(485, 485, 485)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(UpdateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(UpdateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(69, Short.MAX_VALUE))
         );
 
@@ -235,13 +257,43 @@ public class UpdateEmployeePage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void phoneTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_phoneTextFieldActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        String Name = nameTextField.getText();
+        String Departmnet = departmnetTextField.getText();
+        String Address = addressTextArea.getText();
+        String State = stateTextField.getText();
+        String City = cityTextField.getText();
+        String Phone = phoneTextField.getText();
+        
+        String checkValidate = checkValidate(Name, Address, Phone, City, State, Departmnet);
+       if(checkValidate.equals("validated"))
+       {
+           Employee e = Config.EMPLOYEE_MAP.get(id);
+           System.out.println("Old Object =>"+e); 
+           e.setName(Name);
+           e.setAddress(Address);
+           e.setCity(City);
+           e.setDepartment(Departmnet);
+           e.setPhone(Phone);
+           e.setState(State);
+           
+           System.out.println("New Updated Object =>"+e);
+           
+            String updateEmployee = new EmployeeService().updateEmployee(Config.SESSION, e);
+            
+            JOptionPane.showMessageDialog(this, updateEmployee, "Update Employee Form", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+            new EmpHomePage().setVisible(true);
+          
+       }
+        
+        
+    }//GEN-LAST:event_UpdateButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -279,7 +331,10 @@ public class UpdateEmployeePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton UpdateButton;
+    private javax.swing.JTextArea addressTextArea;
+    private javax.swing.JTextField cityTextField;
+    private javax.swing.JTextField departmnetTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -292,11 +347,47 @@ public class UpdateEmployeePage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField nameTextField;
+    private javax.swing.JTextField phoneTextField;
+    private javax.swing.JTextField stateTextField;
     // End of variables declaration//GEN-END:variables
+public String checkValidate(String name,String address,String phone,String city,String state,String department)
+{
+    if(name.isEmpty())
+    {
+        JOptionPane.showMessageDialog(this, "Name is required", "Update form", JOptionPane.ERROR_MESSAGE);
+        return "not validated";
+        
+    }
+    else if(address.isEmpty())
+    {
+        JOptionPane.showMessageDialog(this, "Address is required", "Update form",JOptionPane.ERROR_MESSAGE);
+        return "not validated";
+    }
+    else if(phone.isEmpty())
+    {
+        JOptionPane.showMessageDialog(this, "Phone No is required", "Update Form", JOptionPane.ERROR_MESSAGE);
+        return "not validated";
+    }
+    else if(city.isEmpty())
+    {
+        JOptionPane.showMessageDialog(this, "City is required", "Update Form", JOptionPane.ERROR_MESSAGE);
+        return "not validated";
+    
+    }
+    else if(state.isEmpty())
+    {
+        JOptionPane.showMessageDialog(this, "State is required","Update form", JOptionPane.ERROR_MESSAGE);
+        return "not validated";
+    }
+    else if(department.isEmpty())
+    {
+        JOptionPane.showMessageDialog(this, "Department is required", "Update form", JOptionPane.ERROR_MESSAGE);
+        return "not validated";
+    }
+    
+    
+    return "validated";
+}
+
 }

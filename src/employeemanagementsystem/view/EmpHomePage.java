@@ -6,25 +6,27 @@
 package employeemanagementsystem.view;
 
 import employeemanagementsystem.config.Config;
+import employeemanagementsystem.model.Employee;
+import employeemanagementsystem.service.EmployeeService;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import org.hibernate.Query;
 
 /**
  *
  * @author GAUTAMI
  */
 public class EmpHomePage extends javax.swing.JFrame {
-
+public Employee e = null;
     /**
      * Creates new form EmpHomePage
      */
     public EmpHomePage() {
         initComponents();
         setTableData();
+        new EmployeeService().setEmployeeMap();
     }
 
     /**
@@ -85,13 +87,25 @@ public class EmpHomePage extends javax.swing.JFrame {
             }
         });
 
+        UpdateEmployee.setBackground(new java.awt.Color(12, 53, 106));
         UpdateEmployee.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         UpdateEmployee.setForeground(new java.awt.Color(255, 255, 255));
         UpdateEmployee.setText("Update Employee");
+        UpdateEmployee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateEmployeeActionPerformed(evt);
+            }
+        });
 
+        Delete.setBackground(new java.awt.Color(12, 53, 106));
         Delete.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         Delete.setForeground(new java.awt.Color(255, 255, 255));
         Delete.setText("Delete");
+        Delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -163,10 +177,46 @@ public class EmpHomePage extends javax.swing.JFrame {
     private void EmpTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EmpTableMouseClicked
         // TODO add your handling code here:
         try {
-            EmpTable.getValueAt(EmpTable.getSelectedRow(), 0).toString();
+            //Select row on Mouse Click for getting emploee id
+            String id = EmpTable.getValueAt(EmpTable.getSelectedRow(),1).toString();
+            System.out.println("<ouse click Id =>"+id);
+            
+            // Find Employee in Employee map on mouse clicked Employee id
+            Employee extractedEmployeeFromMap = Config.EMPLOYEE_MAP.get(Integer.parseInt(id));
+            System.out.println("Mouse Clicked data =>"+extractedEmployeeFromMap);
+            
+            // set data of selected employee for sending it to update page
+            e = extractedEmployeeFromMap;
+            
         } catch (Exception e) {
+            System.out.println(e);
         }
     }//GEN-LAST:event_EmpTableMouseClicked
+
+    private void UpdateEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateEmployeeActionPerformed
+        // TODO add your handling code here:
+        if(!(e.equals("null"))){
+            this.dispose(); 
+            new UpdateEmployeePage(e).setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Please Select record to update","Home Page",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_UpdateEmployeeActionPerformed
+
+    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
+        // TODO add your handling code here:
+        if(!(e.equals("null"))){
+            String deleteEmployee = new EmployeeService().deleteEmployee(Config.SESSION, e);
+            JOptionPane.showMessageDialog(this, deleteEmployee, "Employee Home Page", JOptionPane.INFORMATION_MESSAGE);
+           e=null;
+           setTableData();
+           
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Please Select record to Delete","Home Page",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_DeleteActionPerformed
 
     /**
      * @param args the command line arguments

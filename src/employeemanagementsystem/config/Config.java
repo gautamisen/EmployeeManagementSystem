@@ -5,6 +5,8 @@
  */
 package employeemanagementsystem.config;
 
+import employeemanagementsystem.model.Employee;
+import java.util.LinkedHashMap;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -20,7 +22,7 @@ public class Config {
     
     public static Transaction TRANSCATION = null;
     
-   
+   public static LinkedHashMap<Integer , Employee> EMPLOYEE_MAP = new LinkedHashMap();
     
     
     

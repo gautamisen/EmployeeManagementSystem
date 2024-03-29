@@ -106,7 +106,7 @@
                           <Group type="102" attributes="0">
                               <Component id="jLabel2" min="-2" pref="146" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jTextField2" min="-2" pref="335" max="-2" attributes="0"/>
+                              <Component id="nameTextField" min="-2" pref="335" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -115,7 +115,7 @@
                               </Group>
                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jTextField1" max="32767" attributes="0"/>
+                                  <Component id="phoneTextField" max="32767" attributes="0"/>
                                   <Component id="jScrollPane1" pref="335" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -124,9 +124,9 @@
                       <Component id="jLabel5" min="-2" pref="146" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextField3" min="-2" pref="351" max="-2" attributes="0"/>
-                          <Component id="jTextField5" min="-2" pref="351" max="-2" attributes="0"/>
-                          <Component id="jTextField4" min="-2" pref="351" max="-2" attributes="0"/>
+                          <Component id="departmnetTextField" min="-2" pref="351" max="-2" attributes="0"/>
+                          <Component id="stateTextField" min="-2" pref="351" max="-2" attributes="0"/>
+                          <Component id="cityTextField" min="-2" pref="351" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -154,20 +154,20 @@
                               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel2" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                                  <Component id="jTextField2" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                                  <Component id="nameTextField" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField4" min="-2" pref="49" max="-2" attributes="0"/>
+                              <Component id="cityTextField" min="-2" pref="49" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel3" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                          <Component id="jTextField1" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
-                          <Component id="jTextField5" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                          <Component id="phoneTextField" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                          <Component id="stateTextField" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -175,10 +175,10 @@
                           <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel5" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                              <Component id="jTextField3" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                              <Component id="departmnetTextField" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="132" max="32767" attributes="0"/>
+                      <EmptySpace pref="83" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
@@ -206,9 +206,9 @@
                 <Property name="text" type="java.lang.String" value="Name:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField1">
+            <Component class="javax.swing.JTextField" name="phoneTextField">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="phoneTextFieldActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
@@ -219,7 +219,7 @@
                 <Property name="text" type="java.lang.String" value="Phone NO:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField2">
+            <Component class="javax.swing.JTextField" name="nameTextField">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
@@ -236,7 +236,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="jTextArea1">
+                <Component class="javax.swing.JTextArea" name="addressTextArea">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
@@ -252,7 +252,7 @@
                 <Property name="text" type="java.lang.String" value="Department:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField3">
+            <Component class="javax.swing.JTextField" name="departmnetTextField">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
@@ -262,7 +262,7 @@
                 <Property name="text" type="java.lang.String" value="City:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField4">
+            <Component class="javax.swing.JTextField" name="cityTextField">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
@@ -272,7 +272,7 @@
                 <Property name="text" type="java.lang.String" value="State:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField5">
+            <Component class="javax.swing.JTextField" name="stateTextField">
             </Component>
           </SubComponents>
         </Container>
@@ -288,7 +288,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="485" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="232" max="-2" attributes="0"/>
+                      <Component id="UpdateButton" min="-2" pref="232" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -297,14 +297,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="67" max="-2" attributes="0"/>
+                      <Component id="UpdateButton" min="-2" pref="67" max="-2" attributes="0"/>
                       <EmptySpace pref="69" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="UpdateButton">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -319,7 +319,7 @@
                 <Property name="actionCommand" type="java.lang.String" value=""/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdateButtonActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
